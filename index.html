@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es" ng-app='app'>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Latest compiled and minified JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <title>prova</title>
+</head>
+
+<body class="body">
+
+
+    <nav class="navbar navbar-inverse" >
+        <a href="#" class="navbar-brand">Notifications</a>
+        <img src="img/logo.png" alt="Rocket ROI" class="responsive-img center-block logo" data-pin-nopin="true" width="32px" height="32">
+    </nav>
+    <div class="row">
+        <div class="col-md-2">
+            <span class="glyphicon glyphicon-search icon"><input class="search" type="" name="" ng-model="search" placeholder="Nombre notificación"></span>
+        </div>
+
+        <div class="col-md-2">
+            <select class="browser-default select" ng-model="nivel">
+                <option value="" disabled selected>Nivel</option>
+                <option value="title">Ascendente</option>
+                <option value="-title">Descendiente</option>
+            
+               
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select class="browser-default select1"  >
+                <option value="" disabled selected>Fecha</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>
+        </div>
+    </div>
+    
+    <!--MINE TITLES -->
+    <div class="row" >
+        <div class="col-md-2 peque text-left"> <i class="small material-icons">view_module</i><span class="title">Generador de estructuras</span></div>
+        <div class="col-md-2 peque text-left"><i class="small material-icons">supervisor_account</i><span class="title">Canal</span></div>
+        <div class="col-md-2 peque text-left"><img src="img/icon-rocket.png" alt="Rocket ROI" class="responsive-img" data-pin-nopin="true" width="32px" height="32">
+            </nav>RocketRoi</div>
+        <div class="col-md-2 peque text-left"><i class="small material-icons">assignment</i><span class="title">Editor</span></div>
+
+        <!--FEUTERS GENERADOR DE ESTRUCTURRAS -->
+        <div class="col-md-2 models text-left" ng-controller=" estructuraController">
+            <div class="row" ng-repeat="article in articles|filter:search|orderBy:nivel" >
+                <div class="col-md-1" >
+                    <img class="imag" ng-src="img/{{article.img}}"  width="70px">
+                </div>
+                <div class="col-md-3 model-small">
+                    <p><strong>{{article.title}}</strong></p><small class="model-small">{{article.sub}}</small>
+                </div>
+                <div class="time col-md-12 ">
+                    <small>{{article.time}}</small><br>
+                </div>
+                <hr class="line">
+            </div>  
+        </div>
+
+        <!--FEUTERS CANAL-->
+        <div class="canal col-md-2 models  text-left" ng-controller=" canalController">
+            <div class="row" ng-repeat="article in articles|filter:search|orderBy:nivel">
+                <div class="col-md-1">
+                    <img class="imag" ng-src="img/{{article.img}}" width="70px">
+                </div>
+                <div class="col-md-3 model-small">
+                    <p><strong>{{article.title}}</strong></p><small class="model-small">{{article.sub}}</small>
+                </div>
+                <div class="time col-md-12 ">
+                    <small>{{article.time}}</small>
+                </div>
+                <hr class="line">
+            </div>  
+        </div>
+           
+        <!--FEUTERS ROCKET ROI-->
+        <div class="rocket col-md-2 models text-left" ng-controller="rocketController">
+            <div class="row" ng-repeat="article in articles|filter:search|orderBy:nivel">
+                <div class="col-md-1">
+                    <img class="imag" ng-src="img/{{article.img}}" width="70px">
+                </div>
+                <div class="col-md-3 model-small">
+                    <p><strong>{{article.title}}</strong></p><small class="model-small">{{article.sub}}</small>
+                </div>
+                <div class="time col-md-12 ">
+                    <small>{{article.time}}</small>
+                 </div>
+                <hr class="line">
+            </div>  
+        </div>
+            
+        <!--FEUTERS EDITOR-->
+        <div class="editor col-md-2 models text-left" ng-controller="editorController">
+            <div class="row" ng-repeat="article in articles|filter:search|orderBy:nivel">
+                <div class="col-md-1">
+                    <img class="imag" ng-src="img/{{article.img}}" width="70px">
+                </div>
+                <div class="col-md-3 model-small">
+                    <p><strong>{{article.title}}</strong></p><small class="model-small">{{article.sub}}</small>
+                    <br>
+                </div>
+                <div class="time col-md-12 ">
+                    <small>{{article.time}}</small>
+                  </div>
+                <hr class="line">
+            </div>  
+        </div>
+            
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="js/controller.js"></script>
+        <script type="text/javascript" src="js/factory.js"></script>
+</body>
+
+</html>
